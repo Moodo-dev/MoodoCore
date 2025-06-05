@@ -2,7 +2,8 @@
     <textarea
       :value="modelValue"
       placeholder="Add a note (optional)"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', ($event.target as HTMLTextAreaElement).value)"
+
       rows="4"
     />
   </template>
