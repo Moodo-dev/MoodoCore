@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+    import { defineProps } from 'vue';
 
-const props = defineProps<{ modelValue: string | null}>()
+    const props = defineProps<{ modelValue: string | null}>()
 
-const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
+    const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 
 </script>
