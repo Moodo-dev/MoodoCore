@@ -24,7 +24,7 @@ const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 .moodSelector button {
   font-size: 2rem;
   padding: 0.5rem 1rem;
-  background-color: #242424; /*TODO: find a way to not use a certain color*/
+  background-color: #85b1dd; /*TODO: find a way to not use a certain color*/
   border: 2px solid transparent;
   cursor: pointer;
 
@@ -34,8 +34,8 @@ const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 }
 
 .moodSelector button.selected {
-  border-color: #975294;
-  background-color: #8b2f87;
+  border-color: #d823cf;
+  background-color: #f13ce8;
   border-radius: 8px;
 }
 </style>

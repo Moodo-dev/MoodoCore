@@ -38,13 +38,13 @@ function submit() {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(220, 38, 38, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .modalContent {
-  background: #eee;
+  background: #242424;
   padding: 2rem;
   border-radius: 8px;
   width: 500px;
