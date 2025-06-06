@@ -15,7 +15,7 @@ const props = defineProps<{ modelValue: string }>()
 
 <style scoped>
 textarea {
-  width: 100%;
+  /* width: 100%; */
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 4px;
