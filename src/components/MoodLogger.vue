@@ -29,7 +29,7 @@ function handleSubmit() {
   console.log('Mood logged:', selectedMood.value, 'Note:', note.value)
   selectedMood.value = null
   note.value = ''
-showReminder.value = false
+  showReminder.value = false
 }
 </script>
 
