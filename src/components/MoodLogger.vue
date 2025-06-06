@@ -21,6 +21,10 @@ const showReminder = ref(false)
 
 setTimeout(() => {
   showReminder.value = true
+  const ping = new Audio('/ping.wav')
+  ping.play().catch((err) => {
+    console.error('Playback failed:', err)
+  })
 }, 5000)
 
 function handleSubmitModal(payload: { mood: string; note: string }) {
