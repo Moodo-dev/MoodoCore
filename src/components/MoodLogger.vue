@@ -1,11 +1,11 @@
 <template>
-  <ReminderModal v-if="showReminder" @close="showReminder = false" @submit="handleSubmit" />
+  <ReminderModal v-if="showReminder" @close="showReminder = false" @submit="handleSubmitModal" />
 
   <div v-else class="moodLogger">
     <MoodSelector v-model="selectedMood" />
     <NoteInput v-model="note" />
 
-    <button :disabled="!selectedMood" @click="handleSubmit">Log Mood</button>
+    <button :disabled="!selectedMood" @click="handleSubmitClicked">Log Mood</button>
   </div>
 </template>
 
@@ -23,13 +23,22 @@ setTimeout(() => {
   showReminder.value = true
 }, 5000)
 
-function handleSubmit() {
-  if (!selectedMood.value) return
+function handleSubmitModal(payload: { mood: string; note: string }) {
+  if (!payload.mood) return
 
-  console.log('Mood logged:', selectedMood.value, 'Note:', note.value)
+  console.log('Mood logged from modal:', payload.mood, 'Note:', payload.note)
+
   selectedMood.value = null
   note.value = ''
   showReminder.value = false
+}
+
+function handleSubmitClicked() {
+  if (!selectedMood.value) return
+
+  console.log('Mood logged from free will:', selectedMood.value, 'Note:', note.value)
+  selectedMood.value = null
+  note.value = ''
 }
 </script>
 
