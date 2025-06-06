@@ -17,4 +17,5 @@ import { defineProps } from 'vue'
 const props = defineProps<{ modelValue: string | null }>()
 
 const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
+// TODO: find out a way to make it a slider? 👀
 </script>
