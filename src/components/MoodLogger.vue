@@ -1,7 +1,7 @@
 <template>
   <ReminderModal v-if="showReminder" @close="showReminder = false" @submit="handleSubmit" />
 
-  <div v-else class="mood-logger">
+  <div v-else class="moodLogger">
     <MoodSelector v-model="selectedMood" />
     <NoteInput v-model="note" />
 
@@ -34,7 +34,7 @@ function handleSubmit() {
 </script>
 
 <style scoped>
-.mood-logger {
+.moodLogger {
   display: flex;
   flex-direction: column;
   gap: 1rem;
