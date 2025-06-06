@@ -3,7 +3,7 @@
     <button
       v-for="mood in moods"
       :key="mood"
-      :class="{ selected: mood === modelValue }"
+      :class="[{ selected: mood === modelValue }, isModal ? 'modal-button' : 'default-button']"
       @click="$emit('update:modelValue', mood)"
     >
       {{ mood }}
@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 
-const props = defineProps<{ modelValue: string | null }>()
+const props = defineProps<{ modelValue: string | null; isModal?: boolean }>()
 
 const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 // TODO: find out a way to make it a slider? 👀
