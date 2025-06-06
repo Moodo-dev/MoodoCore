@@ -3,7 +3,7 @@
     <button
       v-for="mood in moods"
       :key="mood"
-      :class="[{ selected: mood === modelValue }, isModal ? 'modal-button' : 'default-button']"
+      :class="[{ selected: mood === modelValue }, isModal ? 'modalButton' : null]"
       @click="$emit('update:modelValue', mood)"
     >
       {{ mood }}
@@ -24,13 +24,16 @@ const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 .moodSelector button {
   font-size: 2rem;
   padding: 0.5rem 1rem;
-  background-color: #85b1dd; /*TODO: find a way to not use a certain color*/
   border: 2px solid transparent;
   cursor: pointer;
-
+  background-color: #85b1dd;
   transition:
     background 0.3s,
     border-color 0.3s ease;
+}
+
+.modalButton {
+  background-color: #242424 !important;
 }
 
 .moodSelector button.selected {
