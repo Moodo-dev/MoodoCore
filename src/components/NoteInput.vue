@@ -10,6 +10,7 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue'
 
+// @ts-ignore
 const props = defineProps<{ modelValue: string }>()
 </script>
 
