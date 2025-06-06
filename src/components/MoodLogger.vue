@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import MoodSelector from './MoodSelector.vue'
 import NoteInput from './NoteInput.vue'
 import ReminderModal from './ReminderModal.vue'
@@ -19,13 +19,20 @@ const selectedMood = ref<string | null>(null)
 const note = ref('')
 const showReminder = ref(false)
 
+const ping = new Audio('/ping.wav')
+ping.load()
+
 setTimeout(() => {
   showReminder.value = true
-  const ping = new Audio('/ping.wav')
-  ping.play().catch((err) => {
-    console.error('Playback failed:', err)
-  })
 }, 5000)
+
+watch(showReminder, (newVal) => {
+  if (newVal) {
+    ping.play().catch((err) => {
+      console.error('Playback failed:', err)
+    })
+  }
+})
 
 function handleSubmitModal(payload: { mood: string; note: string }) {
   if (!payload.mood) return
