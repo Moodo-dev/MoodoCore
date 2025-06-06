@@ -12,3 +12,14 @@ import { defineProps } from 'vue'
 
 const props = defineProps<{ modelValue: string }>()
 </script>
+
+<style scoped>
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+</style>
