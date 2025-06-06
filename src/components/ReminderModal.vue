@@ -2,7 +2,7 @@
   <div class="modalOverlay">
     <div class="modalContent">
       <h2>Please log your mood</h2>
-      <MoodSelector v-model="tempMood" />
+      <MoodSelector v-model="tempMood" :isModal="true" />
       <NoteInput v-model="tempNote" />
 
       <button :disabled="!tempMood" @click="submit">Submit</button>
