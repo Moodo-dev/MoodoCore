@@ -2,7 +2,7 @@
   <ReminderModal v-if="showReminder" @close="showReminder = false" @submit="handleSubmitModal" />
 
   <div v-else class="moodLogger">
-    <MoodSelector v-model="selectedMood" />
+    <MoodSelector v-model="selectedMood" :isModal="false" />
     <NoteInput v-model="note" />
 
     <button :disabled="!selectedMood" @click="handleSubmitClicked">Log Mood</button>
