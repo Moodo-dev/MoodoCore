@@ -1,6 +1,6 @@
 <template>
-  <div class="modal-overlay">
-    <div class="modal-content">
+  <div class="modalOverlay">
+    <div class="modalContent">
       <h2>Please log your mood</h2>
       <MoodSelector v-model="tempMood" />
       <NoteInput v-model="tempNote" />
