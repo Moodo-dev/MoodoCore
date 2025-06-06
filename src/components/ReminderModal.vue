@@ -9,24 +9,26 @@
         <button @click="$emit('close')">Dismiss</button>
       </div>
     </div>
-  </template>
+</template>
   
-  <script lang="ts" setup>
-  import { ref } from 'vue'
-  import MoodSelector from './MoodSelector.vue'
-  import NoteInput from './NoteInput.vue'
-  
-  const tempMood = ref<string | null>(null)
-  const tempNote = ref('')
-  
-  function submit() {
-    if (!tempMood.value) return
+<script lang="ts" setup>
+    import { ref } from 'vue'
+    import MoodSelector from './MoodSelector.vue'
+    import NoteInput from './NoteInput.vue'
 
-    // @ts-ignore
-    const submitEvent = new CustomEvent('submit', { detail: { mood: tempMood.value, note: tempNote.value } })
-   
-    // @ts-ignore
-    emit('submit', { mood: tempMood.value, note: tempNote.value })
-  }
-  </script>
+    const emit = defineEmits<{
+        (e: 'submit', payload: { mood: string; note: string }): void
+        (e: 'close'): void
+    }>()
+
+    const tempMood = ref<string | null>(null)
+    const tempNote = ref('')
+
+    function submit() {
+      console.log('Submit clicked')
+        if (!tempMood.value) return
+        emit('submit', { mood: tempMood.value, note: tempNote.value })
+    }
+</script>
+  
   
