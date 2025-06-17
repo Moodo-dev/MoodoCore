@@ -5,8 +5,10 @@
       <MoodSelector v-model="tempMood" :isModal="true" />
       <NoteInput v-model="tempNote" />
 
-      <button :disabled="!tempMood" @click="submit">Submit</button>
-      <button @click="$emit('close')">Dismiss</button>
+      <div class="actionButtons">
+        <button :disabled="!tempMood" @click="submit">Submit</button>
+        <button @click="$emit('close')">Dismiss</button>
+      </div>
     </div>
   </div>
 </template>
