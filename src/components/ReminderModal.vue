@@ -3,7 +3,7 @@
     <div class="modalContent">
       <h2>Please log your mood</h2>
       <MoodSelector v-model="tempMood" :isModal="true" />
-      <NoteInput v-model="tempNote" />
+      <NoteInput class="modalNote" v-model="tempNote" />
 
       <div class="actionButtons">
         <button :disabled="!tempMood" @click="submit">Submit</button>
@@ -58,6 +58,10 @@ function submit() {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  margin: 10px;
+}
+.modalNote {
+  width: 65%;
   margin: 10px;
 }
 </style>
