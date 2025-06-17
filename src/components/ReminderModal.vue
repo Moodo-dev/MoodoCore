@@ -53,4 +53,11 @@ function submit() {
   max-width: 90%;
   text-align: center;
 }
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px;
+}
 </style>
