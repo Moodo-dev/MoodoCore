@@ -65,8 +65,28 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
   showReminder.value = false
 }
 
-function handleSubmitClicked() {
+async function handleSubmitClicked() {
   if (!selectedMood.value) return
+
+  if (!note.value) {
+    await axios
+      .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  } else {
+    await axios
+      .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value, note: note.value })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
 
   console.log('Mood logged from free will:', selectedMood.value, 'Note:', note.value)
   selectedMood.value = null
