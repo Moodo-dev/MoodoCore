@@ -14,7 +14,9 @@ import { ref, watch } from 'vue'
 import MoodSelector from './MoodSelector.vue'
 import NoteInput from './NoteInput.vue'
 import ReminderModal from './ReminderModal.vue'
+import axios from 'axios'
 
+const BASE_MOOD_URL = 'http://localhost:5001/api/moods/'
 const selectedMood = ref<string | null>(null)
 const note = ref('')
 const showReminder = ref(false)
@@ -34,9 +36,28 @@ watch(showReminder, (newVal) => {
   }
 })
 
-function handleSubmitModal(payload: { mood: string; note: string }) {
+async function handleSubmitModal(payload: { mood: string; note: string }) {
   if (!payload.mood) return
 
+  if (!payload.note) {
+    await axios
+      .post(`${BASE_MOOD_URL}`, { mood: payload.mood })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  } else {
+    await axios
+      .post(`${BASE_MOOD_URL}`, { mood: payload.mood, note: payload.note })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
   console.log('Mood logged from modal:', payload.mood, 'Note:', payload.note)
 
   selectedMood.value = null
