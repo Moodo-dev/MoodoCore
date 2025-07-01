@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { DefineProps, watch, ref } from 'vue'
+import { defineProps, watch, ref } from 'vue'
 
 const props = defineProps<{
   message: string
