@@ -9,11 +9,17 @@
 <script lang="ts" setup>
 import { watch, ref, nextTick } from 'vue'
 
-const props = defineProps<{
-  message?: string
-  type?: 'success' | 'error' | 'info'
-  duration?: number
-}>()
+interface Notification {
+  id: number
+  message: string
+  type: 'success' | 'error' | 'info'
+}
+
+// const props = defineProps<{
+//   message?: string
+//   type?: 'success' | 'error' | 'info'
+//   duration?: number
+// }>()
 
 const isVisible = ref(false)
 
