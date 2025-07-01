@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, watch, ref } from 'vue'
+import { watch, ref } from 'vue'
 
 const props = defineProps<{
   message: string
@@ -55,13 +55,13 @@ watch(
   background-color: #2196f3;
 }
 
-.fade-Enter-Active,
-.fade-Leave-Active {
-  transition: opacity 0.3s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 
-.fade-Enter-From,
-.fade-Leave-To {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
