@@ -29,4 +29,17 @@ watch(
 )
 </script>
 
-<style scoped></style>
+<style scoped>
+.notif {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+</style>
