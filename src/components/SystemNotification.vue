@@ -54,4 +54,14 @@ watch(
 .info {
   background-color: #2196f3;
 }
+
+.fadeEnterActive,
+.fadeLeaveActive {
+  transition: opacity 0.3s ease;
+}
+
+.fadeEnterFrom,
+.fadeLeaveTo {
+  opacity: 0;
+}
 </style>
