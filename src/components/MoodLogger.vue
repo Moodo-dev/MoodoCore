@@ -36,7 +36,7 @@ watch(showReminder, (newVal) => {
   if (newVal) {
     ping.play().catch((err) => {
       console.error('Playback failed:', err)
-      createNotification(`An error occured (${err.message})`, 'error')
+      createNotification(`An error occured (${err.message})`, 'error', 10000)
     })
   }
 })
