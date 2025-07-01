@@ -10,7 +10,7 @@
 import { watch, ref, nextTick } from 'vue'
 
 interface Notification {
-  id: number
+  id: string
   message: string
   type: 'success' | 'error' | 'info'
 }
@@ -20,6 +20,17 @@ interface Notification {
 //   type?: 'success' | 'error' | 'info'
 //   duration?: number
 // }>()
+
+const notifications = ref<Notification[]>([])
+
+function createNotification(message: string, type: Notification['type'] = 'info') {
+  const id = Math.random().toString(36).substring(2, 8)
+  notifications.value.push({ id, message, type })
+
+  setTimeout(() => {
+    notifications.value = notifications.value.filter((n) => n.id !== id)
+  }, 3000)
+}
 
 const isVisible = ref(false)
 
