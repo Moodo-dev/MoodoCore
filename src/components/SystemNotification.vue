@@ -16,6 +16,17 @@ const props = defineProps<{
 }>()
 
 const isVisible = ref(true)
+
+watch(
+  () => props.message,
+  () => {
+    isVisible.value = true
+    setTimeout(() => {
+      isVisible.value = false
+    }, props.duration || 3000)
+  },
+  { immediate: true },
+)
 </script>
 
 <style scoped></style>
