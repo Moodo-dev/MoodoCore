@@ -13,16 +13,27 @@ const { notifications } = useNotifications()
 </script>
 
 <style scoped>
-.notif {
+.notifContainer {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.notif {
   padding: 1rem 2rem;
   border-radius: 6px;
   color: white;
   font-weight: bold;
-  z-index: 1000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: auto;
+  max-width: 320px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .success {
@@ -55,5 +66,9 @@ const { notifications } = useNotifications()
 .fade-leave-from {
   transform: translateX(0);
   opacity: 1;
+}
+
+.fade-move {
+  transition: transform 0.3s ease;
 }
 </style>
