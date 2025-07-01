@@ -7,12 +7,7 @@
       <MoodLogger @notify="showNotification" />
     </main>
 
-    <SystemNotification
-      v-if="notification.isVisible"
-      :type="notification.type"
-      :message="notification.message"
-      @close="notification.isVisible = false"
-    />
+    <SystemNotification />
   </div>
 </template>
 
