@@ -21,6 +21,10 @@ const selectedMood = ref<string | null>(null)
 const note = ref('')
 const showReminder = ref(false)
 
+const emit = defineEmits<{
+  (e: 'notify', message: string, type: 'success' | 'error'): void
+}>()
+
 const ping = new Audio('/ping.wav')
 ping.load()
 
@@ -51,9 +55,7 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
   } else {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: payload.mood, note: payload.note })
-      .then(function (response) {
-        console.log(response)
-      })
+      .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
       })
