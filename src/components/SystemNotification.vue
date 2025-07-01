@@ -58,13 +58,23 @@ watch(
   background-color: #2196f3;
 }
 
-.fade-enter-active,
+.fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .fade-enter-from,
 .fade-leave-to {
+  transform: translateX(50px);
   opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  transform: translateX(0);
+  opacity: 1;
 }
 </style>
