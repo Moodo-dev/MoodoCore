@@ -7,48 +7,9 @@
 </template>
 
 <script lang="ts" setup>
-//@ts-ignore just ignore the import errors for now
-import { watch, ref, nextTick } from 'vue'
+import { useNotifications } from '../composables/useNotification'
 
-interface Notification {
-  id: string
-  message: string
-  type: 'success' | 'error' | 'info'
-}
-
-// const props = defineProps<{
-//   message?: string
-//   type?: 'success' | 'error' | 'info'
-//   duration?: number
-// }>()
-
-const notifications = ref<Notification[]>([])
-
-function createNotification(message: string, type: Notification['type'] = 'info') {
-  const id = Math.random().toString(36).substring(2, 8)
-  notifications.value.push({ id, message, type })
-
-  setTimeout(() => {
-    notifications.value = notifications.value.filter((n) => n.id !== id)
-  }, 3000)
-}
-
-// const isVisible = ref(false)
-
-// watch(
-//   () => props.message,
-//   async () => {
-//     /*Really shitty fix to it instantly popping the notification up
-//      * but it works i guess
-//      * so i guess i shouldnt complain? */
-//     await nextTick()
-//     isVisible.value = true
-//     setTimeout(() => {
-//       isVisible.value = false
-//     }, props.duration || 3000)
-//   },
-//   { immediate: true },
-// )
+const { notifications } = useNotifications()
 </script>
 
 <style scoped>
