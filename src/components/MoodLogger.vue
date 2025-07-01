@@ -58,6 +58,7 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
       .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
+        emit('notify', 'An error occured while logging your mood', 'error')
       })
   }
   console.log('Mood logged from modal:', payload.mood, 'Note:', payload.note)
