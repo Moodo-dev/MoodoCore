@@ -46,11 +46,10 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
   if (!payload.note) {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: payload.mood })
-      .then(function (response) {
-        console.log(response)
-      })
+      .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
+        emit('notify', `An error occured while logging your mood! (${error.message})`, 'error')
       })
   } else {
     await axios
@@ -58,7 +57,7 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
       .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
-        emit('notify', 'An error occured while logging your mood', 'error')
+        emit('notify', `An error occured while logging your mood! (${error.message})`, 'error')
       })
   }
   console.log('Mood logged from modal:', payload.mood, 'Note:', payload.note)
@@ -74,20 +73,18 @@ async function handleSubmitClicked() {
   if (!note.value) {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value })
-      .then(function (response) {
-        console.log(response)
-      })
+      .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
+        emit('notify', `An error occured while logging your mood! (${error.message})`, 'error')
       })
   } else {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value, note: note.value })
-      .then(function (response) {
-        console.log(response)
-      })
+      .then(() => emit('notify', 'Mood logged successfully!', 'success'))
       .catch(function (error) {
         console.log(error)
+        emit('notify', `An error occured while logging your mood! (${error.message})`, 'error')
       })
   }
 
