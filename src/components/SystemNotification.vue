@@ -42,4 +42,16 @@ watch(
   z-index: 1000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.success {
+  background-color: #4caf50;
+}
+
+.error {
+  background-color: #f44336;
+}
+
+.info {
+  background-color: #2196f3;
+}
 </style>
