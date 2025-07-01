@@ -11,10 +11,13 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
+import { useNotifications } from '../composables/useNotification'
 import MoodSelector from './MoodSelector.vue'
 import NoteInput from './NoteInput.vue'
 import ReminderModal from './ReminderModal.vue'
 import axios from 'axios'
+
+const { createNotification } = useNotifications()
 
 const BASE_MOOD_URL = 'http://localhost:5001/api/moods/'
 const selectedMood = ref<string | null>(null)
@@ -29,7 +32,7 @@ const ping = new Audio('/ping.wav')
 ping.load()
 
 setTimeout(() => {
-  emit('notify', 'Time for a quick mood check-in!', 'info')
+  createNotification('Time for a quick mood check-in!')
   showReminder.value = true
 }, 5000)
 
@@ -37,7 +40,7 @@ watch(showReminder, (newVal) => {
   if (newVal) {
     ping.play().catch((err) => {
       console.error('Playback failed:', err)
-      emit('notify', `An error occured (${err.message})`, 'error')
+      createNotification(`An error occured (${err.message})`, 'error')
     })
   }
 })
