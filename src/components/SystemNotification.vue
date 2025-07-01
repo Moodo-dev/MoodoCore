@@ -1,9 +1,9 @@
 <template>
-  <Transition name="fade">
+  <TransitionGroup name="fade" tag="div" class="notifContainer">
     <div v-if="isVisible" :class="['notif', type]">
       {{ message }}
     </div>
-  </Transition>
+  </TransitionGroup>
 </template>
 
 <script lang="ts" setup>
