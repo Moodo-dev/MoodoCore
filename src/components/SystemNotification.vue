@@ -37,8 +37,7 @@ watch(
 .notif {
   position: fixed;
   bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 2rem;
   padding: 1rem 2rem;
   border-radius: 6px;
   color: white;
