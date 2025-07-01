@@ -1,12 +1,13 @@
 <template>
   <TransitionGroup name="fade" tag="div" class="notifContainer">
-    <div v-if="isVisible" :class="['notif', type]">
-      {{ message }}
+    <div v-for="notif in notifications" :key="notif.id" :class="['notif', notif.type]">
+      {{ notif.message }}
     </div>
   </TransitionGroup>
 </template>
 
 <script lang="ts" setup>
+//@ts-ignore just ignore the import errors for now
 import { watch, ref, nextTick } from 'vue'
 
 interface Notification {
@@ -32,22 +33,22 @@ function createNotification(message: string, type: Notification['type'] = 'info'
   }, 3000)
 }
 
-const isVisible = ref(false)
+// const isVisible = ref(false)
 
-watch(
-  () => props.message,
-  async () => {
-    /*Really shitty fix to it instantly popping the notification up
-     * but it works i guess
-     * so i guess i shouldnt complain? */
-    await nextTick()
-    isVisible.value = true
-    setTimeout(() => {
-      isVisible.value = false
-    }, props.duration || 3000)
-  },
-  { immediate: true },
-)
+// watch(
+//   () => props.message,
+//   async () => {
+//     /*Really shitty fix to it instantly popping the notification up
+//      * but it works i guess
+//      * so i guess i shouldnt complain? */
+//     await nextTick()
+//     isVisible.value = true
+//     setTimeout(() => {
+//       isVisible.value = false
+//     }, props.duration || 3000)
+//   },
+//   { immediate: true },
+// )
 </script>
 
 <style scoped>
