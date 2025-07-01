@@ -7,19 +7,23 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, ref } from 'vue'
+import { watch, ref, nextTick } from 'vue'
 
 const props = defineProps<{
-  message: string
+  message?: string
   type?: 'success' | 'error' | 'info'
   duration?: number
 }>()
 
-const isVisible = ref(true)
+const isVisible = ref(false)
 
 watch(
   () => props.message,
-  () => {
+  async () => {
+    /*Really shitty fix to it instantly popping the notification up
+     * but it works i guess
+     * so i guess i shouldnt complain? */
+    await nextTick()
     isVisible.value = true
     setTimeout(() => {
       isVisible.value = false
