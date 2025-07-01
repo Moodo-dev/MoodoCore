@@ -22,13 +22,14 @@ const note = ref('')
 const showReminder = ref(false)
 
 const emit = defineEmits<{
-  (e: 'notify', message: string, type: 'success' | 'error'): void
+  (e: 'notify', message: string, type: 'success' | 'error' | 'info'): void
 }>()
 
 const ping = new Audio('/ping.wav')
 ping.load()
 
 setTimeout(() => {
+  emit('notify', 'Time for a quick mood check-in!', 'info')
   showReminder.value = true
 }, 5000)
 
@@ -36,6 +37,7 @@ watch(showReminder, (newVal) => {
   if (newVal) {
     ping.play().catch((err) => {
       console.error('Playback failed:', err)
+      emit('notify', `An error occured (${err.message})`, 'error')
     })
   }
 })
