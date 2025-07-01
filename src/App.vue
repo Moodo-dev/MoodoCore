@@ -4,7 +4,7 @@
       <h1>Moodo</h1>
     </header>
     <main>
-      <MoodLogger />
+      <MoodLogger @notify="showNotification" />
     </main>
 
     <SystemNotification
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import MoodLogger from './components/MoodLogger.vue'
 import SystemNotification from './components/SystemNotification.vue'
 
