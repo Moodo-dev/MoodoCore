@@ -6,11 +6,26 @@
     <main>
       <MoodLogger />
     </main>
+
+    <SystemNotification
+      v-if="notification.isVisible"
+      :type="notification.type"
+      :message="notification.message"
+      @close="notification.isVisible = false"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { reactive, ref } from 'vue'
 import MoodLogger from './components/MoodLogger.vue'
+import SystemNotification from './components/SystemNotification.vue'
+
+const notification = reactive({
+  isVisible: false,
+  message: '',
+  type: 'info' as 'info' | 'success' | 'error',
+})
 </script>
 
 <style>
