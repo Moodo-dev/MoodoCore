@@ -1,14 +1,9 @@
 import { ref } from 'vue'
+import { notifType, type INotification } from '../types/notification'
 
-interface Notification {
-  id: string
-  message: string
-  type: 'success' | 'error' | 'info'
-}
+const notifications = ref<INotification[]>([])
 
-const notifications = ref<Notification[]>([])
-
-function createNotification(message: string, type: Notification['type'] = 'info', duration = 3000) {
+function createNotification(message: string, type: notifType = notifType.info, duration = 3000) {
   const id = Math.random().toString(36).substring(2, 8)
   notifications.value.push({ id, message, type })
 
