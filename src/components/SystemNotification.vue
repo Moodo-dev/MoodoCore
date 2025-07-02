@@ -1,6 +1,10 @@
 <template>
   <TransitionGroup name="fade" tag="div" class="notifContainer">
-    <div v-for="notif in notifications" :key="notif.id" :class="['notif', notif.type]">
+    <div
+      v-for="notif in notifications"
+      :key="notif.id"
+      :class="['notif', getNotifType(notif.type)]"
+    >
       {{ notif.message }}
     </div>
   </TransitionGroup>
@@ -8,8 +12,11 @@
 
 <script lang="ts" setup>
 import { useNotifications } from '../composables/useNotification'
+import { notifType } from '../types/notification'
 
 const { notifications } = useNotifications()
+
+const getNotifType = (type: number) => notifType[type]
 </script>
 
 <style scoped>
