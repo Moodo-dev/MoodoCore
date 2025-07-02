@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import { useNotifications } from '../composables/useNotification'
+import { notifType } from '../types/notification'
 import MoodSelector from './MoodSelector.vue'
 import NoteInput from './NoteInput.vue'
 import ReminderModal from './ReminderModal.vue'
@@ -36,7 +37,7 @@ watch(showReminder, (newVal) => {
   if (newVal) {
     ping.play().catch((err) => {
       console.error('Playback failed:', err)
-      createNotification(`An error occured (${err.message})`, 'error', 10000)
+      createNotification(`An error occured (${err.message})`, notifType.error, 10000)
     })
   }
 })
@@ -47,18 +48,24 @@ async function handleSubmitModal(payload: { mood: string; note: string }) {
   if (!payload.note) {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: payload.mood })
-      .then(() => createNotification('Mood logged successfully!', 'success'))
+      .then(() => createNotification('Mood logged successfully!', notifType.success))
       .catch(function (error) {
         console.log(error)
-        createNotification(`An error occured while logging your mood! (${error.message})`, 'error')
+        createNotification(
+          `An error occured while logging your mood! (${error.message})`,
+          notifType.error,
+        )
       })
   } else {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: payload.mood, note: payload.note })
-      .then(() => createNotification('Mood logged successfully!', 'success'))
+      .then(() => createNotification('Mood logged successfully!', notifType.success))
       .catch(function (error) {
         console.log(error)
-        createNotification(`An error occured while logging your mood! (${error.message})`, 'error')
+        createNotification(
+          `An error occured while logging your mood! (${error.message})`,
+          notifType.error,
+        )
       })
   }
   console.log('Mood logged from modal:', payload.mood, 'Note:', payload.note)
@@ -74,18 +81,24 @@ async function handleSubmitClicked() {
   if (!note.value) {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value })
-      .then(() => createNotification('Mood logged successfully!', 'success'))
+      .then(() => createNotification('Mood logged successfully!', notifType.success))
       .catch(function (error) {
         console.log(error)
-        createNotification(`An error occured while logging your mood! (${error.message})`, 'error')
+        createNotification(
+          `An error occured while logging your mood! (${error.message})`,
+          notifType.error,
+        )
       })
   } else {
     await axios
       .post(`${BASE_MOOD_URL}`, { mood: selectedMood.value, note: note.value })
-      .then(() => createNotification('Mood logged successfully!', 'success'))
+      .then(() => createNotification('Mood logged successfully!', notifType.success))
       .catch(function (error) {
         console.log(error)
-        createNotification(`An error occured while logging your mood! (${error.message})`, 'error')
+        createNotification(
+          `An error occured while logging your mood! (${error.message})`,
+          notifType.error,
+        )
       })
   }
 
