@@ -4,7 +4,7 @@
   <div v-else class="moodLogger">
     <MoodSelector v-model="selectedMood" :isModal="false" />
     <NoteInput v-model="note" />
-
+    <!-- TODO: find a fix for the slider for some reason not updating the selected mood as expected -->
     <button :disabled="!selectedMood" @click="handleSubmitClicked">Log Mood</button>
   </div>
 </template>
