@@ -1,5 +1,5 @@
 <template>
-  <ReminderModal v-if="showReminder" @close="showReminder = false" @submit="handleSubmitModal" />
+  <ReminderModal v-if="showReminder" @dismiss="showReminder = false" @submit="handleSubmitModal" />
 
   <div v-else class="moodLogger">
     <MoodSelector v-model="selectedMood" :isModal="false" />
