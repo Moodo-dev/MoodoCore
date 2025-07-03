@@ -7,7 +7,7 @@
 
       <div class="actionButtons">
         <button :disabled="!tempMood" @click="submit">Submit</button>
-        <button @click="$emit('close')">Dismiss</button>
+        <button @click="$emit('dismiss')">Dismiss</button>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ import NoteInput from './NoteInput.vue'
 
 const emit = defineEmits<{
   (e: 'submit', payload: { mood: string; note: string }): void
-  (e: 'close'): void
+  (e: 'dismiss'): void
 }>()
 
 const tempMood = ref<string | null>(null)
