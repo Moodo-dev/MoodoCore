@@ -18,6 +18,7 @@ import { computed, ref, watch } from 'vue'
 
 // @ts-ignore
 const props = defineProps<{ modelValue: string | null; isModal?: boolean }>()
+const emit = defineEmits(['update: modelValue'])
 
 const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 // TODO: find out a way to make it a slider? 👀
