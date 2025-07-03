@@ -1,5 +1,5 @@
 <template>
-  <ReminderModal v-if="showReminder" @dismiss="showReminder = false" @submit="handleSubmitModal" />
+  <ReminderModal v-if="showReminder" @dismiss="handleDismissal" @submit="handleSubmitModal" />
 
   <div v-else class="moodLogger">
     <MoodSelector v-model="selectedMood" :isModal="false" />
@@ -105,6 +105,11 @@ async function handleSubmitClicked() {
   console.log('Mood logged from free will:', selectedMood.value, 'Note:', note.value)
   selectedMood.value = null
   note.value = ''
+}
+
+//TODO: Allow user to set their own interval through a set list.
+function handleDismissal() {
+  showReminder = false
 }
 </script>
 
