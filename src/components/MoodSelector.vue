@@ -42,8 +42,6 @@ watch(
 function updateMood() {
   emit('update: modelValue', moods[internalIndex.value])
 }
-
-// TODO: find out a way to make it a slider? 👀
 </script>
 
 <style scoped>
