@@ -29,7 +29,6 @@ const tempMood = ref<string | null>(null)
 const tempNote = ref('')
 
 function submit() {
-  console.log('Submit clicked')
   if (!tempMood.value) return
   emit('submit', { mood: tempMood.value, note: tempNote.value })
 }
