@@ -117,7 +117,7 @@ async function handleSubmitClicked() {
 //TODO: Allow user to set their own interval through a set list.
 function handleDismissal() {
   startReminderTimer()
-  showReminder = false
+  showReminder.value = false
 }
 
 startReminderTimer()
