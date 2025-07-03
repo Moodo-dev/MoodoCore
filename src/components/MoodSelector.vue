@@ -1,5 +1,7 @@
 <template>
   <div class="moodSelector">
+    <div class="currentMoodIndex">{{ moods[internalIndex] }}</div>
+
     <input
       type="range"
       min="0"
@@ -8,8 +10,6 @@
       @input="updateMood"
       class="slider"
     />
-
-    <div class="currentMoodIndex">{{ moods[internalIndex] }}</div>
 
     <!-- <button
       v-for="mood in moods"
@@ -47,7 +47,22 @@ function updateMood() {
 </script>
 
 <style scoped>
-.moodSelector button {
+.moodSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider {
+  width: 100%;
+}
+
+.currentMoodIndex {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+/* .moodSelector button {
   font-size: 2rem;
   padding: 0.5rem 1rem;
   border: 2px solid transparent;
@@ -66,5 +81,5 @@ function updateMood() {
   border-color: #d823cf;
   background-color: #f13ce8;
   border-radius: 8px;
-}
+} */
 </style>
