@@ -1,13 +1,15 @@
 <template>
   <div class="moodSelector">
-    <button
+    <input type="range" min="0" :max="moods.length - 1" />
+
+    <!-- <button
       v-for="mood in moods"
       :key="mood"
       :class="[{ selected: mood === modelValue }, isModal ? 'modalButton' : null]"
       @click="$emit('update:modelValue', mood)"
     >
       {{ mood }}
-    </button>
+    </button> -->
   </div>
 </template>
 
