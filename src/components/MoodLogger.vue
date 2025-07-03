@@ -28,10 +28,17 @@ const showReminder = ref(false)
 const ping = new Audio('/ping.wav')
 ping.load()
 
-setTimeout(() => {
-  createNotification('Time for a quick mood check-in!')
-  showReminder.value = true
-}, 5000)
+const reminderTimeoutId = ref<number | null>(null)
+
+function startReminderTimer() {
+  if (reminderTimeoutId.value !== null) {
+    clearTimeout(reminderTimeoutId.value)
+  }
+  reminderTimeoutId.value = window.setTimeout(() => {
+    createNotification('Time for a quick mood check-in!')
+    showReminder.value = true
+  }, 5000)
+}
 
 watch(showReminder, (newVal) => {
   if (newVal) {
@@ -109,8 +116,11 @@ async function handleSubmitClicked() {
 
 //TODO: Allow user to set their own interval through a set list.
 function handleDismissal() {
+  startReminderTimer()
   showReminder = false
 }
+
+startReminderTimer()
 </script>
 
 <style scoped>
