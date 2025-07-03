@@ -7,7 +7,7 @@
 
       <div class="actionButtons">
         <button :disabled="!tempMood" @click="submit">Submit</button>
-        <button @click="$emit('dismiss')">Dismiss</button>
+        <button @click="dismissReminder">Dismiss</button>
       </div>
     </div>
   </div>
@@ -17,6 +17,8 @@
 import { ref } from 'vue'
 import MoodSelector from './MoodSelector.vue'
 import NoteInput from './NoteInput.vue'
+import { useNotifications } from '../composables/useNotification'
+const { createNotification } = useNotifications()
 
 const emit = defineEmits<{
   (e: 'submit', payload: { mood: string; note: string }): void
@@ -30,6 +32,11 @@ function submit() {
   console.log('Submit clicked')
   if (!tempMood.value) return
   emit('submit', { mood: tempMood.value, note: tempNote.value })
+}
+
+function dismissReminder() {
+  createNotification('Got it. You will be asked to log your mood again in a moment!')
+  emit('dismiss')
 }
 </script>
 
