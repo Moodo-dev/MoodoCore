@@ -1,6 +1,6 @@
 <template>
   <div class="moodSelector">
-    <input type="range" min="0" :max="moods.length - 1" />
+    <input type="range" min="0" :max="moods.length - 1" v-model="internalIndex" />
 
     <!-- <button
       v-for="mood in moods"
@@ -21,6 +21,8 @@ const props = defineProps<{ modelValue: string | null; isModal?: boolean }>()
 const emit = defineEmits(['update: modelValue'])
 
 const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
+const internalIndex = ref(props.modelValue ? moods.indexOf(props.modelValue) : 0)
+
 // TODO: find out a way to make it a slider? 👀
 </script>
 
