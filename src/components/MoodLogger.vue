@@ -37,7 +37,7 @@ function startReminderTimer() {
   reminderTimeoutId.value = window.setTimeout(() => {
     createNotification('Time for a quick mood check-in!')
     showReminder.value = true
-  }, 5000)
+  }, 10000)
 }
 
 watch(showReminder, (newVal) => {
