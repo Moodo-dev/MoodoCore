@@ -6,7 +6,10 @@
       :max="moods.length - 1"
       v-model="internalIndex"
       @input="updateMood"
+      class="slider"
     />
+
+    <div class="currentMoodIndex">{{ moods[internalIndex] }}</div>
 
     <!-- <button
       v-for="mood in moods"
