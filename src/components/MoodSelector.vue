@@ -32,6 +32,10 @@ const emit = defineEmits(['update: modelValue'])
 const moods = ['😃', '😐', '😞', '😡', '😴'] //Probably change later?
 const internalIndex = ref(props.modelValue ? moods.indexOf(props.modelValue) : 0)
 
+
+// This watch for what ever reason doesn't catch the changes made with a slider.
+// However, if we uncomment the buttons, suddenly its able to catch changes there.
+//TODO: Look into whatever the fuck this is
 watch(
   () => props.modelValue,
   (newVal) => {
