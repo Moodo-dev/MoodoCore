@@ -16,7 +16,10 @@
       However, with this input of type range, we are not doing that.
       And in full honesty, I have no clue how we would do that, nothing exists on the documentation about it.
       Which leads me to the following TODO
-      TODO: Find a way to implement the same type of classing as we use for the buttons in the archived code below-->
+      TODO: Find a way to implement the same type of classing as we use for the buttons in the archived code below
+
+      Actually, reading through the docs of class bindings, ive come to the realization that;
+      i have no fucking clue what the fuck i have written here and how it works.-->
 
     <!-- <button
       v-for="mood in moods"
