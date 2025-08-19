@@ -9,7 +9,14 @@
       v-model="internalIndex"
       @input="updateMood"
       class="slider"
-    />
+      />
+      <!--Ok, I do believe i finally understand the problem now.
+      Essentially, with the buttons we had a certain class applied to it when each one was selected
+      this allowed us to directly update the mood for when we ran the @click event.
+      However, with this input of type range, we are not doing that.
+      And in full honesty, I have no clue how we would do that, nothing exists on the documentation about it.
+      Which leads me to the following TODO
+      TODO: Find a way to implement the same type of classing as we use for the buttons in the archived code below-->
 
     <!-- <button
       v-for="mood in moods"
@@ -44,6 +51,7 @@ watch(
 )
 
 function updateMood() {
+  console.log("Mood shifted")
   emit('update: modelValue', moods[internalIndex.value])
 }
 </script>
